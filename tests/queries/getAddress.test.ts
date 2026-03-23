@@ -9,6 +9,7 @@ describe('getAddress', () => {
                     street
                     city
                     zipcode
+                    state
                 }
             }
         `;
@@ -26,6 +27,7 @@ describe('getAddress', () => {
           street: '123 Street St.',
           city: 'Sometown',
           zipcode: '43215',
+          state: "Some State1"
         }
       }
     });
@@ -38,6 +40,7 @@ describe('getAddress', () => {
                     street
                     city
                     zipcode
+                    state
                 }
             }
         `;
