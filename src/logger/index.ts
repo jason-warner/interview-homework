@@ -15,15 +15,19 @@ export class Logger {
     this.requestId = requestId;
   }
 
-  info(message: string, meta?: object) {
-    this.winston.info(message, meta);
+  info(message: string, meta?: object | string) {
+    const metaObj = typeof meta === 'string' ? { detail: meta } : meta;
+    this.winston.info(message, { requestId: this.requestId, ...metaObj });
+  }
+  
+
+  error(message: string, meta?: object | string) {
+    const metaObj = typeof meta === 'string' ? { detail: meta } : meta;
+    this.winston.error(message, { requestId: this.requestId, ...metaObj });
   }
 
-  error(message: string, meta?: object) {
-    this.winston.error(message, meta);
-  }
-
-  warn(message: string, meta?: object) {
-    this.winston.warn(message, meta);
+  warn(message: string, meta?: object | string) {
+    const metaObj = typeof meta === 'string' ? { detail: meta } : meta;
+    this.winston.warn(message, { requestId: this.requestId, ...metaObj });
   }
 }

@@ -5,7 +5,7 @@ import { GraphQLError } from 'graphql/error';
 
 export const buildHeaders = (): Plugin<ContextType> => {
   return {
-    onExecute({ context, extendContext }) {
+    onParse({ context, extendContext }) {
       const client = context.request?.headers.get('client');
 
       if (!client) {
