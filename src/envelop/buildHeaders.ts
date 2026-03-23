@@ -15,5 +15,22 @@ export const buildHeaders = (): Plugin<ContextType> => {
       const requestId = uuid();
       extendContext({ requestId, client });
     },
+    onExecute() {
+      return {
+        onExecuteDone({ args, result, setResult }) {
+          if ('data' in result) {
+            const requestId = args.contextValue.requestId;
+            setResult({
+              ...result,
+              extensions: {
+                ...result.extensions,
+                metadata: { requestId },
+              },
+            });
+          }
+        },
+      };
+    },
+
   };
 };
