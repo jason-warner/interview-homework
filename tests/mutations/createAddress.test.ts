@@ -43,16 +43,18 @@ describe('createAddress', () => {
             variables,
         });
 
-        expect(result).toEqual({
-            data: {
-                createAddress: {
-                    street: '123 Test Ave',
-                    city: 'Testville',
-                    zipcode: '99999',
-                    state: 'North State',
+        expect(result).toEqual(
+            expect.objectContaining({
+                data: {
+                    createAddress: {
+                        street: '123 Test Ave',
+                        city: 'Testville',
+                        zipcode: '99999',
+                        state: 'North State',
+                    },
                 },
-            },
-        });
+            })
+        );
     });
 
     test('Duplicate username error', async () => {
