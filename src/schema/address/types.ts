@@ -5,10 +5,23 @@ export type Address = {
   state: string;
 };
 
+// duplicating due to likelihood of future divergence from Address type
+export type AddressInput = {
+  street: string;
+  city: string;
+  zipcode: string;
+  state: string;
+}
+
 export type Addresses = {
   [key: string]: Address;
 };
 
 export type Args = {
   username: string;
+};
+
+export type CreateAddressArgs = {
+  username: string;
+  address: AddressInput;
 };

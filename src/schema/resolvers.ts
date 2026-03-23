@@ -1,5 +1,5 @@
-import { getAddress } from "./address/address";
-import { Address, Args } from "./address/types";
+import { createAddress, getAddress } from "./address/address";
+import { Address, Args, CreateAddressArgs } from "./address/types";
 
 export const resolvers = {
   Query: {
@@ -7,4 +7,9 @@ export const resolvers = {
       return getAddress(parent, args, context);
     },
   },
+  Mutation: {
+    createAddress: (parent: any, args: CreateAddressArgs, context: any, info: any): Address => {
+      return createAddress(parent, args, context)
+    }
+  }
 };
